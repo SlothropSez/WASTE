@@ -26,7 +26,7 @@ def init(ircbot):
         if len(history) > int(config["GPT-2"]["histlen"]):
             del history[0]
 
-        if "shithead-X" in msg.lower():
+        if config["IRC"]["username"] in msg.lower():
             # Time to shitpost
 
             num_lines = random.choices(
