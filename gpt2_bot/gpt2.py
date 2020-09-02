@@ -26,7 +26,7 @@ def init(ircbot):
         if len(history) > int(config["GPT-2"]["histlen"]):
             del history[0]
 
-        if random.randrange(0, 100) < bot.data["chattiness"]:
+        if "waste" in msg.lower():
             # Time to shitpost
 
             num_lines = random.choices(
@@ -67,6 +67,6 @@ def init(ircbot):
 
             lines = map(transform_line, lines)
 
-            return "\n".join(lines)
+            return " ".join(lines)
 
     ircbot.register_privmsg_handler(handler)
