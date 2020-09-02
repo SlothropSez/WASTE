@@ -15,12 +15,19 @@ Let's implement another chatbot, this time using the latest hip machine learning
 ## Getting started
 
 #Set up a virtual env with python 3.8.5, in my case I used conda
+
 conda create --name shithead-x python=3.8.5
+
 #Activate the env then begin installing dependencies; the reason for installing these packages like so is to avoid mismatched dendency requirements you would     otherwise get installing the most up to date versions of each package 
+
 pip install transformers==2.9.1
+
 pip install tensorflow==1.15
+
 pip install pytorch-lightning==0.8.4
+
 pip install aitextgen
+
 ### Building a model
 
 You can use any pytorch GPT-2 model, but for functionality as a chatbot, it's best to train one using existing IRC logs. This way, your chatbot will mimic the culture of the channel you're deploying it in.
