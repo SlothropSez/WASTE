@@ -14,18 +14,13 @@ Let's implement another chatbot, this time using the latest hip machine learning
 
 ## Getting started
 
-First, set up the dependencies:
-
-```bash
-# Best to use a python virtualenv - install the virtualenv package if you don't have it already
-mkdir ~/virtualenvs
-cd ~/virtualenvs
-virtualenv -p $(which python3) shithead-X
-source shithead-X/bin/activate
-cd /path/to/shithead-X
-pip install -r requirements.txt
-```
-
+#Set up a virtual env with python 3.8.5, in my case I used conda
+conda create --name shithead-x python=3.8.5
+#Activate the env then begin installing dependencies; the reason for installing these packages like so is to avoid mismatched dendency requirements you would     otherwise get installing the most up to date versions of each package 
+pip install transformers==2.9.1
+pip install tensorflow==1.15
+pip install pytorch-lightning==0.8.4
+pip install aitextgen
 ### Building a model
 
 You can use any pytorch GPT-2 model, but for functionality as a chatbot, it's best to train one using existing IRC logs. This way, your chatbot will mimic the culture of the channel you're deploying it in.
@@ -41,6 +36,8 @@ This is not as simple as it sounds, as any 'unhelpful' input that is not filtere
 I don't actually know anything about natural language processing or artificial intelligence, I just played about with it until I was happy with the result. Training the provided 124M model worked the best for me, although this will require a powerful GPU to train (you can train it on Google's servers if you don't have one at home) and text generation can take a while on a weak CPU.
 
 Mainly I followed [this tutorial](https://colab.research.google.com/drive/15qBZx5y9rdaQSyWpsreMDnTiZ5IlN0zD?usp=sharing) provided by aitextgen's author.
+
+As of this writing (September 2, 2020) you must insert the same pip install regimen in the fist cell with "!" in front of each pip to run; avoid impossibly long lines in your dataset
 
 ### Configuration
 
