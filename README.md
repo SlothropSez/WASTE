@@ -1,6 +1,6 @@
 # WASTE
 
-This is a fork of [Shithead-X](https://github.com/albino/shithead-X)
+This is a fork of [Shithead-X](https://github.com/albino/shithead-X) and is very hack-ish, it makes low level changes only
 
 GPT-2 SUPER NEXT GENERATION MACHINE LEARNING irc bot
 
@@ -15,6 +15,8 @@ conda create --name WASTE python=3.8.5
 cd /path/to/WASTE
 
 conda install pytorch
+
+pip install pytorch-lightning==0.8.4
 
 pip install -r requirements.txt
 
@@ -39,6 +41,7 @@ You may follow [this tutorial](https://colab.research.google.com/drive/15qBZx5y9
 As of this writing (September 2, 2020) you must insert:
 
 !pip install tensorflow==1.15
+
 !pip install pytorch-lightning==0.8.4
 
 Beneath the transformers install.
