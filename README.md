@@ -16,12 +16,18 @@ Let's implement another chatbot, this time using the latest hip machine learning
 
 First, set up the dependencies:
 
-# Best to use a python virtualenv - install the virtualenv package if you don't have it already
+Set up a virtual env
+
 mkdir ~/virtualenvs
+
 cd ~/virtualenvs
+
 virtualenv -p $(which python3) shithead-X
+
 source shithead-X/bin/activate
+
 cd /path/to/shithead-X
+
 pip install -r requirements.txt
 
 ### Building a model
