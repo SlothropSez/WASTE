@@ -14,6 +14,8 @@ conda create --name WASTE python=3.8.5
 
 cd /path/to/WASTE
 
+conda install pytorch
+
 pip install -r requirements.txt
 
 ### Building a model
