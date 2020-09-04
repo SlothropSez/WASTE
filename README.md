@@ -14,19 +14,15 @@ Let's implement another chatbot, this time using the latest hip machine learning
 
 ## Getting started
 
-#Set up a virtual env with python 3.8.5, in my case I used conda
+First, set up the dependencies:
 
-conda create --name shithead-x python=3.8.5
-
-#Activate the env then begin installing dependencies; the reason for installing these packages like so is to avoid mismatched dendency requirements you would     otherwise get installing the most up to date versions of each package 
-
-pip install transformers==2.9.1
-
-pip install tensorflow==1.15
-
-pip install pytorch-lightning==0.8.4
-
-pip install aitextgen
+# Best to use a python virtualenv - install the virtualenv package if you don't have it already
+mkdir ~/virtualenvs
+cd ~/virtualenvs
+virtualenv -p $(which python3) shithead-X
+source shithead-X/bin/activate
+cd /path/to/shithead-X
+pip install -r requirements.txt
 
 ### Building a model
 
