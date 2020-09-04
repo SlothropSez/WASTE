@@ -1,32 +1,18 @@
-# shithead-X
+# WASTE
 
-GPT-2 SUPER NEXT GENERATION MACHINE LEARNING irc shitposting bot
+This is a fork of [Shithead-X](https://github.com/albino/shithead-X)
 
-*`shithead-X` is an IRC chatbot based capable of producing remarkably realistic output. It is based on [aitextgen](https://github.com/minimaxir/aitextgen), a library implementing the [GPT-2](https://en.wikipedia.org/wiki/OpenAI#GPT-2) model.*
-
-### The problem
-
-[`shithead-ng`](https://github.com/albino/shithead-ng) is a cool Markov chain-based chatbot, but its funniness peaks around 750,000 keys, it could do with a much more intelligent weighting system, and I am bored of simple Markov chains and don't want to work on it any more.
-
-### The solution
-
-Let's implement another chatbot, this time using the latest hip machine learning technology.
+GPT-2 SUPER NEXT GENERATION MACHINE LEARNING irc bot
 
 ## Getting started
 
-First, set up the dependencies:
+#Set up a virtual env, I used conda
 
-Set up a virtual env
+conda create --name WASTE python=3.8.5 
 
-mkdir ~/virtualenvs
+#Activate the env, then
 
-cd ~/virtualenvs
-
-virtualenv -p $(which python3) shithead-X
-
-source shithead-X/bin/activate
-
-cd /path/to/shithead-X
+cd /path/to/WASTE
 
 pip install -r requirements.txt
 
@@ -36,6 +22,8 @@ You can use any pytorch GPT-2 model, but for functionality as a chatbot, it's be
 
 This can take a while to get just right - a bit of trial and effort will be worth it here.
 
+You can use anything as the dataset, however, simply collect the text into a .txt (use <|startoftext|> and <|endoftext|> to delimit sections) and you're good to go.
+
 #### Filtering the logs
 
 This is not as simple as it sounds, as any 'unhelpful' input that is not filtered at this stage can cause problems with the model later on. **A simple, well thought-out filter is crucial to training a good model later.** Obvious things to filter include names, timestamps, URLs and bot output - I have included some filter scripts I used as examples in `dump_logs.py` and `filter.sh`.
@@ -44,9 +32,21 @@ This is not as simple as it sounds, as any 'unhelpful' input that is not filtere
 
 I don't actually know anything about natural language processing or artificial intelligence, I just played about with it until I was happy with the result. Training the provided 124M model worked the best for me, although this will require a powerful GPU to train (you can train it on Google's servers if you don't have one at home) and text generation can take a while on a weak CPU.
 
-Mainly I followed [this tutorial](https://colab.research.google.com/drive/15qBZx5y9rdaQSyWpsreMDnTiZ5IlN0zD?usp=sharing) provided by aitextgen's author.
+You may follow [this tutorial](https://colab.research.google.com/drive/15qBZx5y9rdaQSyWpsreMDnTiZ5IlN0zD?usp=sharing) provided by aitextgen's author.
 
-As of this writing (September 2, 2020) you must insert the same pip install regimen in the fist cell with "!" in front of each pip to run; avoid impossibly long lines in your dataset
+As of this writing (September 2, 2020) you must insert:
+
+!pip install tensorflow==1.15
+!pip install pytorch-lightning==0.8.4
+
+Beneath the transformers install.
+
+If you want to use the 355M and larger models, you can follow [this](https://colab.research.google.com/drive/1VLG8e7YSEwypxU-noRNhsv5dW4NfTGce) colab notebook. Then copy the trained model to your gdrive where you can download it. Once downloaded, extract the files. Install [gpt-2-simple](https://github.com/minimaxir/gpt-2-simple) and tensorflow 1.15. Navigate to your environment's "Scripts" folder and copy the file named "transformers-cli" and paste it into the folder containing the folder "checkpoint" that was in the checkpoint_run1.tar, then create a folder called "pytorch". Now, still in the folder containing the folder "checkpoint"
+, run:
+
+python transformers-cli convert --model_type gpt2 --tf_checkpoint checkpoint/run1 --pytorch_dump_output pytorch --config checkpoint/run1/hparams.json
+
+This will convert the model from gpt-2-simple into a pytorch model suitable for use in aitextgen. Navigate to the "pytorch" folder and you should have two files, "config.json" and "pytorch_model.bin", move these files to a folder called "trained_model" within the WASTE directory. 
 
 ### Configuration
 
